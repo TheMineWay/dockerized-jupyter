@@ -4,12 +4,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-notebook
+    env_file:
+      - .env
     ports:
       - "8880:8888"
+    volumes:
+      - ${NOTEBOOKS_FOLDER}:/app
 
   lab:
     build:
       context: .
       dockerfile: Dockerfile-lab
+    env_file:
+      - .env
     ports:
       - "8881:8888"
+    volumes:
+      - ${LABS_FOLDER}:/app
